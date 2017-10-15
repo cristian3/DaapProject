@@ -6,7 +6,7 @@ contract Transporte {
   Asiento[] private asientos; ///Array de asientos
 
   /// Constructor
-  function Transporte(uint _idTransporte, uint _numeroAsientos){
+  function Transporte(uint _idTransporte, uint _numeroAsientos) {
     idTransporte = _idTranporte;
     numeroAsientos = _numeroAsientos;
     inicializarAsientos();
@@ -18,19 +18,19 @@ contract Transporte {
     bool seguroContratado;
   }
 
-  function getIdTransporte() public constant return (uint){
+  function getIdTransporte() internal constant return (uint){
     return idTransporte;
   }
 
-  function getNumeroAsientos() public constant return (uint){
+  function getNumeroAsientos() internal constant return (uint){
     return numerAsientos;
   }
 
-  function getAsientos() public constant return (Asiento[]){
+  function getAsientos() internal constant return (Asiento[]){
     return asientos;
   }
  ///Funcion que inicializa todos los asientos del transporte
-  function inicializarAsientos() private {
+  function inicializarAsientos() internal {
     for (uint i = 0; i < numeroAsientos; i++) {
       asientos.push(Asiento(
         {
