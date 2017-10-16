@@ -47,8 +47,8 @@ contract Transporte {
     require(_numeroAsiento >= 0 && _numeroAsiento < numeroAsientos);
     require(asientos[_numeroAsiento].addressPersona == 0x0000000000000000000000000000000000000000);
     asientos[_numeroAsiento].addressPersona = msg.sender;
-    asientos[_numeroAsiento]. = msg.value;
-    asientos[_numeroAsiento]. = _seguroCOntratado;
+    asientos[_numeroAsiento].pagoTransporte = msg.value;
+    asientos[_numeroAsiento].seguroContratado = _seguroContratado;
     return true
   }
 
