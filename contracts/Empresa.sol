@@ -25,11 +25,15 @@ contract Empresa {
   }
 
   function buscarTransporte(uint _idTransporte) private return (Transporte){
-      uint numeroTransportes = transportes.length;
-      for (uint i = 0; i < numeroTransportes; i++) {
-        if(transportes[i].getIdTransporte() == _idTransporte){
-          return trasportes[i];
-        }
+    uint numeroTransportes = transportes.length;
+    for (uint i = 0; i < numeroTransportes; i++) {
+      if(transportes[i].getIdTransporte() == _idTransporte){
+        return trasportes[i];
       }
+    }
+  }
+
+  function indemnizarPasajero(uint _idTransporte, uint _numeroAsiento, bool _seguroContratado) public return (bool) {
+    return buscarTransporte(_idTransporte).devolver(_numeroAsiento, _seguroContratado);
   }
 }

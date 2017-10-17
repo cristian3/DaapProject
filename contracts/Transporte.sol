@@ -14,7 +14,7 @@ contract Transporte {
   ///Representacion de un asiento
   struct Asiento {
     address addressPersona; ///Representacion de la persona que contrata el viaje
-    uint256 pagoTransporte;
+    uint pagoTransporte;
     bool seguroContratado;
   }
 
@@ -50,6 +50,14 @@ contract Transporte {
     asientos[_numeroAsiento].pagoTransporte = msg.value;
     asientos[_numeroAsiento].seguroContratado = _seguroContratado;
     return true
+  }
+
+  function devolver(uint _numeroAsiento, bool _seguroContratado) returns (bool){
+    require(adopters[_numeroAsiento].addressPersona == msg.sender);
+    require(asientos[_numeroAsiento].seguroContratado == true);
+    require(msg.sender.send(asientos[_numeroAsiento].pagoTransporte));
+    asientos[_numeroAsiento].pagoTransporte = 0; // Para evitar doble devolucion
+    return true;
   }
 
 }
